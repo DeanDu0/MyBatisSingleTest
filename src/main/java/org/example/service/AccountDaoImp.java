@@ -10,7 +10,7 @@ public class AccountDaoImp {
     @Autowired
     private AccountDao accountDao;
     public Account getById(Integer id){
-        return accountDao.getById(id);
+        return accountDao.getByID(id);
     }
 
 }

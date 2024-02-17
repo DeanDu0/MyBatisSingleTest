@@ -6,6 +6,6 @@ import org.example.domain.Account;
 //对应的是@Mapper注解的接口
 public interface AccountDao {
     @Select("select * from tbl_acount where id=#{id}")
-    public Account getById(Integer id);
+    public Account getByID(Integer id);
 
 }
