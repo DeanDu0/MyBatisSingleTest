@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 public class MyAdvice {
     //org.example.service.AccountDaoImp.getById(Integer)
     //* org.example.service.*.getById(Integer)
-    @Pointcut("execution(* org.example.service.*.getById(Integer))")
+    @Pointcut("execution(* org.example.service.*.getById(..))")
     private void pt(){}
     @Before("pt()")
     //定义通知方法
