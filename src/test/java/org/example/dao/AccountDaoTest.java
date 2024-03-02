@@ -3,6 +3,7 @@ package org.example.dao;
 import org.example.config.SpringConfig;
 import org.example.domain.Account;
 import org.example.service.AccountDaoImp;
+import org.example.service.ResourceService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,5 +21,6 @@ public class AccountDaoTest {
         System.out.println(ac);
 
     }
+
 
 }

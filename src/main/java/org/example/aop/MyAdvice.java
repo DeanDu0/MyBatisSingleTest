@@ -1,9 +1,12 @@
 package org.example.aop;
 
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.*;
-import org.example.domain.Account;
 import org.springframework.stereotype.Component;
+
+import java.util.Arrays;
 
 /**
  *定义通知类
@@ -19,8 +22,10 @@ public class MyAdvice {
     //定义通知方法
 //    @After("pt()")
 //    @AfterReturning("pt()")
-    @AfterThrowing("pt()")
-    public void method(){
+//    @AfterThrowing("pt()")
+    public void method(JoinPoint jp){
+        Object[] args=jp.getArgs();
+        System.out.println(Arrays.toString(args));
         System.out.println(System.currentTimeMillis());
     }
 //    @Around("pt()")
@@ -30,4 +35,20 @@ public class MyAdvice {
         System.out.println("around after advice......");
         return ac;
     }
+    @Pointcut("execution(* org.example.service.ResourceServiceImpl.openURL(*,*))")
+    private void servicePt(){}
+    @Around("servicePt()")
+    public Object trimMethod(ProceedingJoinPoint pj) throws Throwable{
+        Object[] args=pj.getArgs();
+        for(int i=0;i< args.length;i++){
+            if(args[i].getClass().equals(String.class)){
+                args[i]=args[i].toString().trim();
+            }
+        }
+        Object ret=pj.proceed(args);
+        return ret;
+
+
+    }
+
 }
