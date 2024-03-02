@@ -11,8 +11,8 @@ public class APP2 {
         AccountDaoImp adi=ctx.getBean(AccountDaoImp.class);
         Account ac=adi.getById(1);
         System.out.println(ac);
-        System.out.println(adi);
-        System.out.println(adi.getClass());
+//        System.out.println(adi);
+//        System.out.println(adi.getClass());
 
     }
 }
