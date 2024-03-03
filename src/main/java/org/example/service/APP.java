@@ -16,6 +16,8 @@ public class APP {
         SqlSessionFactory sqlSessionFactory=sqlSessionFactoryBuilder.build(inputStream);
         SqlSession sqlSession=sqlSessionFactory.openSession();
         AccountDao accountDao=sqlSession.getMapper(AccountDao.class);
+        accountDao.update(1,500);
+        sqlSession.commit();
         Account ac=accountDao.getByID(1);
         System.out.println(ac);
         sqlSession.close();
