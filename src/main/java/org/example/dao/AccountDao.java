@@ -11,5 +11,6 @@ public interface AccountDao {
     public Account getByID(Integer id);
     @Update("update tbl_acount set money=#{money} where id=#{id}")
     public void update(@Param("id") Integer id, @Param("money") Integer money);
+//    public void update(Integer id,Integer money);
 
 }
